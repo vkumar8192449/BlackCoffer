@@ -1,4 +1,5 @@
 import "./App.css";
+import Chart from "chart.js/auto";
 import React, { act, useEffect, useState } from "react";
 import { DashLeft } from "./components/DashLeft";
 import { DashRight } from "./components/DashRight";
