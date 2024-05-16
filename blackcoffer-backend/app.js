@@ -19,4 +19,11 @@ app.use(express.urlencoded({
 app.use(express.static("public"));
 app.use(morgan('dev'));
 
+import overview from "./src/routes/overview.routes.js"
+import country from "./src/routes/country.routes.js"
+
+//routes declaration
+app.use("/api/v1/overview", overview);
+app.use("/api/v1/country", country);
+
 export { app };
