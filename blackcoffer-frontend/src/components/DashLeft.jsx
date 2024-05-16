@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const DashLeft = (prop) => {
   return (
-    <div className="border-2 w-[24%] min-h-[100vh] flex flex-col items-center px-2">
+    <div className="w-[24%] min-h-[100vh] flex flex-col items-center px-2">
       <span className="text-3xl font-bold text-[#1b254b] mt-12 mb-8">
         BLACK
         <span className="text-3xl font-semibold text-[#1b254b]">COFFER</span>
