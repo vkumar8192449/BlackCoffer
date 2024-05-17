@@ -25,7 +25,7 @@ export const Overview = () => {
           withCredentials: true,
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       //   creating intensity array
       let inten = [];
       for (let i = 0; i < response?.data?.data?.intensity.length; i++) {
