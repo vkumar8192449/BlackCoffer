@@ -1,0 +1,63 @@
+.data-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 30%;
+}
+
+.data-tile:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.data-tile .header {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.data-tile .header h3 {
+    font-size: 1.25em;
+    margin: 0;
+    color: #333;
+}
+
+.data-tile .header .source {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+}
+
+.data-tile .header .source a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.data-tile .header .source a:hover {
+    text-decoration: underline;
+}
+
+.data-tile .content p {
+    margin: 10px 0;
+    font-size: 1em;
+    color: #555;
+}
+
+.data-tile .content strong {
+    color: #333;
+}
+
+.data-tile .footer {
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+    padding-top: 10px;
+    font-size: 0.9em;
+    color: #777;
+}

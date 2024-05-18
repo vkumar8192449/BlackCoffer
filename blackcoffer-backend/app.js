@@ -21,9 +21,11 @@ app.use(morgan('dev'));
 
 import overview from "./src/routes/overview.routes.js"
 import country from "./src/routes/country.routes.js"
+import allData from "./src/routes/allData.routes.js"
 
 //routes declaration
 app.use("/api/v1/overview", overview);
 app.use("/api/v1/country", country);
+app.use("/api/v1/all-data", allData);
 
 export { app };
