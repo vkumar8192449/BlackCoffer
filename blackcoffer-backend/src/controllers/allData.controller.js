@@ -40,9 +40,10 @@ const filterData = asyncHandler(async (req, res) => {
         }
         if (req.query.endyear !== "All") {
             let searchObj = {};
-            searchObj.end_year = parseInt(req.query.endyear);
+            searchObj.end_year = Number(req.query.endyear);
             searchArr.push(searchObj);
         }
+        console.log(searchArr);
         let data;
         if (searchArr.length) {
             data = await Blackcoffer.find({

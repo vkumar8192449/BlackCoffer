@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const overviewSchema = new mongoose.Schema({
     end_year: {
-        type: String,
+        type: Number,
     },
     intensity: {
         type: Number,
