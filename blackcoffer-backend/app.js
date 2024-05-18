@@ -26,6 +26,6 @@ import allData from "./src/routes/allData.routes.js"
 //routes declaration
 app.use("/api/v1/overview", overview);
 app.use("/api/v1/country", country);
-app.use("/api/v1/all-data", allData);
+app.use("/api/v1/data", allData);
 
 export { app };

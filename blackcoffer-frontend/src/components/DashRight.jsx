@@ -4,6 +4,7 @@ import { Overview } from "./Overview";
 import { Country } from "./Country";
 import { DataTable } from "./DataTable";
 import { TopBar } from "./TopBar";
+import { Profile } from "./Profile";
 
 export const DashRight = () => {
   const [topbarcontent, settopbarcontent] = useState();
@@ -25,7 +26,10 @@ export const DashRight = () => {
             path="/data-table"
             element={<DataTable settopbarcontent={settopbarcontent} />}
           />
-          <Route path="/profile" element={<>Profile section</>} />
+          <Route
+            path="/profile"
+            element={<Profile settopbarcontent={settopbarcontent} />}
+          />
         </Route>
       </Routes>
     </div>

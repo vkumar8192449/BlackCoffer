@@ -161,7 +161,7 @@ export const DataTable = (prop) => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_APP_BACKEND_URL}/api/v1/all-data`,
+        `${import.meta.env.VITE_APP_BACKEND_URL}/api/v1/data`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -176,6 +176,35 @@ export const DataTable = (prop) => {
       console.error(error.response?.data?.message);
     }
   };
+
+  const [country, setcountry] = useState("All");
+  const [region, setregion] = useState("All");
+  const [pestle, setpestle] = useState("All");
+  const [sector, setsector] = useState("All");
+  const [endyear, setendyear] = useState("All");
+
+  const filterData = async () => {
+    setload(true);
+    try {
+      const response = await axios.get(
+        `${
+          import.meta.env.VITE_APP_BACKEND_URL
+        }/api/v1/data/filter?country=${country}&region=${region}&pestle=${pestle}&sector=${sector}&endyear=${endyear}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      setload(false);
+      setdata(response?.data?.data);
+    } catch (error) {
+      setload(false);
+      console.error(error.response?.data?.message);
+    }
+  };
+
   useEffect(() => {
     prop.settopbarcontent("All Records");
     fetchData();
@@ -187,10 +216,17 @@ export const DataTable = (prop) => {
 
   return (
     <div className="mt-14">
-      <div className="flex justify-center">
+      <div className="flex justify-evenly items-end">
         <div>
           <p>Search by country</p>
-          <select className="w-full">
+          <select
+            id="country"
+            className="w-full"
+            onChange={(e) => {
+              setcountry(e.target.value);
+            }}
+            value={country}
+          >
             {countryArray?.map((country, index) => (
               <option key={index} value={country}>
                 {country}
@@ -200,7 +236,14 @@ export const DataTable = (prop) => {
         </div>
         <div>
           <p>Search by region</p>
-          <select className="w-full">
+          <select
+            id="region"
+            className="w-full"
+            onChange={(e) => {
+              setregion(e.target.value);
+            }}
+            value={region}
+          >
             {regionArray?.map((region, index) => (
               <option key={index} value={region}>
                 {region}
@@ -210,7 +253,14 @@ export const DataTable = (prop) => {
         </div>
         <div>
           <p>Search by pestle</p>
-          <select className="w-full">
+          <select
+            id="pestle"
+            className="w-full"
+            onChange={(e) => {
+              setpestle(e.target.value);
+            }}
+            value={pestle}
+          >
             {pestleArray?.map((pestle, index) => (
               <option key={index} value={pestle}>
                 {pestle}
@@ -220,7 +270,14 @@ export const DataTable = (prop) => {
         </div>
         <div>
           <p>Search by sector</p>
-          <select className="w-full">
+          <select
+            id="sector"
+            className="w-full"
+            onChange={(e) => {
+              setsector(e.target.value);
+            }}
+            value={sector}
+          >
             {sectorArray?.map((sector, index) => (
               <option key={index} value={sector}>
                 {sector}
@@ -230,7 +287,14 @@ export const DataTable = (prop) => {
         </div>
         <div>
           <p>Search by end year</p>
-          <select className="w-full">
+          <select
+            id="endyear"
+            className="w-full"
+            onChange={(e) => {
+              setendyear(e.target.value);
+            }}
+            value={endyear}
+          >
             {endYearArray?.map((endyear, index) => (
               <option key={index} value={endyear}>
                 {endyear}
@@ -238,9 +302,16 @@ export const DataTable = (prop) => {
             ))}
           </select>
         </div>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-6 py-2 h-min rounded"
+          onClick={filterData}
+        >
+          Filter
+        </button>
       </div>
+      <hr className="border-2 mt-4" />
       <div className="tiles-container mt-4">
-        {data ? (
+        {data.length ? (
           data?.map((record, index) => <DataTile key={index} record={record} />)
         ) : (
           <p className="font-semibold">No records found...</p>
