@@ -1,9 +1,9 @@
 import React from "react";
 
-export const TopBar = () => {
+export const TopBar = (prop) => {
   return (
     <div className="flex justify-between items-end mt-8">
-      <p className="text-3xl font-semibold">Main Dashboard</p>
+      <p className="text-3xl font-semibold">{prop.topbarcontent}</p>
       <form
         className="max-w-md w-full rounded-full"
         style={{ boxShadow: "rgba(0, 0, 0, 0.15) 0px 5px 15px" }}

@@ -61,7 +61,7 @@ const countryCodes = {
   Venezuela: "VE",
 };
 
-export const Country = () => {
+export const Country = (prop) => {
   const [country, setcountry] = useState();
   const [region, setregion] = useState();
   const [regionlabel, setregionlabel] = useState();
@@ -79,7 +79,7 @@ export const Country = () => {
           withCredentials: true,
         }
       );
-      console.log(response?.data?.data);
+      // console.log(response?.data?.data);
       setcountry(response?.data?.data?.countries);
 
       //region
@@ -107,6 +107,7 @@ export const Country = () => {
   };
 
   useEffect(() => {
+    prop.settopbarcontent("Country Dashboard");
     fetchData();
   }, []);
   return (

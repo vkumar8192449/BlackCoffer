@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Bubble, Doughnut, Line } from "react-chartjs-2";
 import axios from "axios";
 
-export const Overview = () => {
+export const Overview = (prop) => {
   const [intensity, setintensity] = useState();
   const [likelihood, setlikelihood] = useState([]);
   const [relevence, setrelevence] = useState([]);
@@ -65,6 +65,7 @@ export const Overview = () => {
   };
 
   useEffect(() => {
+    prop.settopbarcontent("Main Dashboard");
     fetchData();
   }, []);
   return (
