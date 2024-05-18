@@ -79,6 +79,7 @@ const overview = asyncHandler(async (req, res) => {
         );
     }
     catch (err) {
+        console.log(err);
         throw new ApiError(500, 'Failed to send contact message');
     }
 })
